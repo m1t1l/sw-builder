@@ -2,6 +2,7 @@
   "name": "sw-builder",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://m1t1l.github.io/sw-builder/build/",
   "dependencies": {
     "@types/jest": "24.0.15",
     "@types/node": "12.0.10",
