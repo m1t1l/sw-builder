@@ -3,7 +3,7 @@ import './App.css';
 import Hero from './model/hero'
 import { statsTypes, heroSkills } from './model/types'
 import PerkController from './model/perksController'
-import { edges, hindrances, perks, Hindrance, Edge } from './model/data-edges'
+import { edges, hindrances, perks } from './model/data-edges'
 import { PerkList, PerksTotals } from './perks'
 import { EdgeMap } from './model/edgeCollection';
 
@@ -182,7 +182,7 @@ class App extends React.Component<any, any> {
         {bages}
         {statsControllers}
         {skills}
-        <PerksTotals {...p.getPoints()}/>
+        <PerksTotals {...p.getPoints()} />
         <div className="perks-container">
           {hindrancesUsed}
           {perksUsed}

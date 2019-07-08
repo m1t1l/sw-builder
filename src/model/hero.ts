@@ -1,4 +1,4 @@
-import { heroSkills, statsTypes, heroStats, levels, heroSkill } from './types'
+import { statsTypes, heroStats, levels } from './types'
 import { skills } from './data'
 
 

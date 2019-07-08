@@ -1,4 +1,4 @@
-import { edges, hindrances, perks, Hindrance, Edge } from './data-edges'
+import { Hindrance, Edge } from './data-edges'
 import { EdgeCollection, IEdge } from './edgeCollection'
 import { PerkCollection } from './perksCollection'
 import Hero from './hero'

@@ -1,5 +1,5 @@
 import React from 'react';
-import { IEdge, EdgeMap } from './model/edgeCollection'
+import { EdgeMap } from './model/edgeCollection'
 import { IPerkTotals } from './model/perksController'
 
 export const PerkInput: React.FC<{ name: string, describtion: string }> = props => (
@@ -27,7 +27,7 @@ export const PerkList: React.FC<{
   )
 }
 
-const SpanOfTotal: React.FC<{val: number, total: number}> = props => (
+const SpanOfTotal: React.FC<{ val: number, total: number }> = props => (
   <span className={props.val > props.total ? 'invalid' : ''}>
     {props.children} {props.val} из {props.total}
   </span>
@@ -43,11 +43,11 @@ export const PerksTotals: React.FC<IPerkTotals> = props => (
     </p>
     <p>
       Перки:
-      <SpanOfTotal val={props.perks} total={props.perks_total}/>
+      <SpanOfTotal val={props.perks} total={props.perks_total} />
     </p>
     <p>
       Черты:
-      <SpanOfTotal val={props.edges} total={props.edges_total}/>
+      <SpanOfTotal val={props.edges} total={props.edges_total} />
     </p>
   </div>
 )
