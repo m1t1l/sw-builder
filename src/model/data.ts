@@ -28,9 +28,5 @@ export const skills: heroSkills = [
   // strength
   { name: "Climbing", attribute: statsTypes.strength, value: 0 },
   // vigor
-  { name: "VigorSkill", attribute: statsTypes.vigor, value: 0 },
-]
-
-export const perks = [
-  
+  // { name: "VigorSkill", attribute: statsTypes.vigor, value: 0 },
 ]

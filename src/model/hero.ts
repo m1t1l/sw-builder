@@ -1,7 +1,8 @@
 import { heroSkills, statsTypes, heroStats, levels, heroSkill } from './types'
 import { skills } from './data'
 
-export const dice = (sides: number): number => Math.random() * sides + 1 | 0
+
+// export const dice = (sides: number): number => Math.random() * sides + 1 | 0
 
 export default class Hero {
   private stats: heroStats = {
@@ -14,8 +15,13 @@ export default class Hero {
   private skills = skills.slice()
   private readonly SKILL_LEVELS = [0, 4, 6, 8, 10, 12]
   private stats_points: number = 5
+  addStatsPoint = (n: number) => {this.stats_points += n}
   private skill_points: number = 15
   private max_skill_points: number = 15
+  addSkillPoint = (n: number) => {
+    this.max_skill_points += n
+    this.computeSkillPoints()
+  }
   getStats = () => this.stats
   getPoints = () => ({
     attributes: this.stats_points,
@@ -29,6 +35,7 @@ export default class Hero {
     if (newValue in levels) {
       this.stats[t] = newValue
       this.stats_points -= sign
+      this.computeSkillPoints()
       return true
     }
     return false
@@ -57,15 +64,16 @@ export default class Hero {
     return false
   }
   computeSkill = (skill_value: number, attr_value: number, add: boolean = true): { value: number, points: number } => {
-    const skill_levels = add ? this.SKILL_LEVELS : this.SKILL_LEVELS.reverse()
-    const skill_level = skill_levels.indexOf(skill_value)
-    if (skill_level === skill_levels.length - 1)
+    const skill_level = this.SKILL_LEVELS.indexOf(skill_value)
+    const new_level = skill_level + (add ? 1 : -1)
+    if (skill_level === -1 || new_level < 0 || new_level === this.SKILL_LEVELS.length)
       return { value: skill_value, points: 0 }
+    const new_value = this.SKILL_LEVELS[new_level]
     return {
-      value: skill_levels[skill_level + 1],
+      value: new_value,
       points: add ?
-        skill_value < attr_value ? -1 : -2 :
-        skill_value > attr_value ? 2 : 1
+        new_value > attr_value ? -2 : -1 :
+        new_value < attr_value ? 1 : 2
     }
   }
 }
